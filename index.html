@@ -10,6 +10,7 @@
 	<script src="services/dataServices.js"></script>
 	<script src="services/loggerService.js"></script>
 	<script src="services/constantService.js"></script>
+	<script src="services/badgeService.js"></script>
 </head>
 <body >
 
@@ -27,6 +28,22 @@
 		{{book.title}},
 		{{book.author}},
 		{{book.year_published}}
+		</li>
+
+	</ul>
+
+	</div>
+	<h3>All readers returned from factory getAllReaders() </h3>
+	<div>
+		
+	<ul>
+		<li ng-repeat = "reader in books.allReaders">
+			
+		{{reader.reader_id}},
+		{{reader.name}},
+		{{reader.weeklyReadingGoal}},
+		{{reader.totalMinutesRead}},
+		{{books.getBadge(reader.totalMinutesRead)}}
 		</li>
 
 	</ul>

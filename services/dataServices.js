@@ -42,7 +42,7 @@
 					reader_id :2,
 					name :'Daniel',
 					weeklyReadingGoal :210,
-					totalMinutesRead :300
+					totalMinutesRead :2600
 				},
 				{
 					reader_id :3,
