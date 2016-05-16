@@ -17,7 +17,7 @@
 			var promises = [];
 			$scope.output =[];
 			items.forEach(function(el){
-				return promises.push($http.get(el).catch(function(e){console.log("err individual failed ",e.data.text)})); //fills the promises[] array
+				return promises.push($http.get(el).catch(function(e){console.log("err individual failed ",e.data.text)})); 
 			});
 			var all = $q.all( promises ); //chaining promises array and passing it to $q.all 
 			all.then(function success(d){
@@ -32,6 +32,7 @@
 				console.log($scope.output);
 
 				window.alert($scope.output.join(""));  //alerting the final output on the screen
+				/// this catch is not getting called because it is being handled by the individual catch at line 20
 			}).catch(function(reason){
 				console.log("reason is ", reason);
 				window.alert($scope.output.join(""));
