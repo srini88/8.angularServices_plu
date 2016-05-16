@@ -30,12 +30,14 @@
 			];
 			//create new deferred object..
 			var deferred = $q.defer();
-
+			//defered object along with ssuccess and failure, also sends noticifaction back to the caller while the work is performed..
+			//client should write code to accept notifications..
 			$timeout(function(){
 
-				var successful = false;
+				var successful = true;
 				if (successful){
-					//u call resolve - when success and ready to return some data..
+					deferred.notify("Just getting started gathering books..");
+					deferred.notify("Almost done gathering books..");
 					deferred.resolve(booksArray);
 				}
 				else

@@ -15,8 +15,9 @@ function BooksController(books, dataService, logger, badgeService){
 
 	//our new version returns a promise..
 	// then is available on all promise objects..
+	///separate cb for handling notifications...
 	dataService.getAllBooks()
-		.then(getBooksSuccess, getBooksError);
+		.then(getBooksSuccess, getBooksError, getBooksNotification);
 
 	// value passed in this books will be the value passed in the resolve function on the deferred object which is booksArray
 	function getBooksSuccess(books){
@@ -24,6 +25,9 @@ function BooksController(books, dataService, logger, badgeService){
 	}
 	function getBooksError(reason){
 		console.log(reason);
+	}
+	function getBooksNotification(notification){
+		console.log("Notification msgs: "+ notification);
 	}
 
 
