@@ -6,7 +6,7 @@ var app = angular.module('app',[]);
 /// provider is also exposed directly on module object..
 
 //inside the booksProvider doing DI with constants..
-app.provider('books', function(constants){
+app.provider('books', ['constants',function(constants){
 	this.$get = function(){
 		var appName = constants.APP_TITLE;
 		var appDesc = constants.APP_DESCRIPTION;
@@ -29,7 +29,7 @@ app.provider('books', function(constants){
 		includeVersionInTitle = value;
 	};
 
-});
+}]);
 
 //injecting the books provider, using booksProvider instead of books
 ///not working with just books
@@ -42,7 +42,7 @@ app.provider('books', function(constants){
 //angular creates underlying provider for our factory or service...
 //to demostrate - in config - it will automatically add provider prefix..
 //lets add dataService..
-app.config(function(booksProvider, constants, dataServiceProvider) {
+app.config(['booksProvider', 'constants', 'dataServiceProvider',function(booksProvider, constants, dataServiceProvider) {
 	booksProvider.setIncludeVersionInTitle(true);
 	console.log("Title from constants service from config: " + constants.APP_TITLE);
 	console.log(dataServiceProvider.$get);
@@ -51,6 +51,6 @@ app.config(function(booksProvider, constants, dataServiceProvider) {
  //      var result = instanceInjector.invoke(factory, this);
  //      if (isUndefined(result)) {
  //        throw $injectorMinErr('undef', "Provider '{0}' must return a value …
-})
+}])
 
 })();

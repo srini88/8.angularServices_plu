@@ -2,7 +2,7 @@
 
 //console.log(angular.module('app')); //prints a big object
 angular.module('app').
-controller('BooksController', BooksController);
+controller('BooksController', ['books', 'dataService', 'logger', 'badgeService' ,BooksController]);
 
 // Injecting our dataService factory to our BooksControlelr
 function BooksController(books, dataService, logger, badgeService){

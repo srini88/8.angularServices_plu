@@ -153,6 +153,14 @@ app.config(function ($provide) {
 });
 
 
+-----dpenedency annotatin..
+///inform injector what services to inject..
+use to support minification...
+three thechniques available...
+ - implicityly from function parameter names..
+ - use $inject property annotation..
+ - using inline array annotation...pass in array of strings...with last parameter as the function...
+ 
 
 
 
