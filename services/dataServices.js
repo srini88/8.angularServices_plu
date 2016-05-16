@@ -78,6 +78,9 @@
 
 			var deferred = $q.defer();
 
+			return deferred.promise; //not working because you are returning here itself and the next piece of code wont run..
+			
+			
 			$timeout(function(){
 				var success = true;
 				if (success){
@@ -89,7 +92,7 @@
 				
 
 			}, 2000);
-			return deferred.promise;
+
 
 		}
 
