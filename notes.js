@@ -123,10 +123,33 @@ also know decorators - modfify or override behavior of existing service..
 
 --constant - can be injected into module's config function 
 
+Angular value and constant services are an ideal way to provide application wide access to shared data without having to pollute the global namespace. They can be injected similar to any other service into our controllers and services. The only real difference between a value and a constant is that the latter can be injected into  a module configuration function while the former cannot.
 
 
+A constant can be injected anywhere.
 
+A constant can not be intercepted by a decorator, that means that the value of a constant should never be changed.
 
+var app = angular.module('app', []);
+
+app.constant('PI', 3.14159265359);
+
+app.controller('appCtrl', function(PI) {
+    var radius = 4;
+    // calculate area of the circle
+    var area = PI * radius * radius; 
+});
+Value differs from constant in that value can not be injected into configurations, but it can be intercepted by decorators.
+
+var app = angular.module('app', []);
+
+app.value('greeting', 'Hello');
+
+app.config(function ($provide) {
+    $provide.decorator('greeting', function ($delegate) {
+        return $delegate + ' World!';
+    });
+});
 
 
 
