@@ -160,7 +160,10 @@ three thechniques available...
  - implicityly from function parameter names..
  - use $inject property annotation..
  - using inline array annotation...pass in array of strings...with last parameter as the function...
- 
+
+using $inject 
+	dataService.$inject = ['logger'];
+
 
 
 

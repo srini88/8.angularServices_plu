@@ -5,9 +5,10 @@
 	.factory('dataService', dataService);
 
 	// have to create and return our serivce..this is the fn that will be attached to the $get property when provider is called behind the fields..
-	function dataService(){
+	function dataService(logger){
 
 		function getAllBooks(){
+			logger.output("getting all books");
 			return [
 				{
 					book_id:1,
@@ -30,6 +31,8 @@
 			];
 		}
 		function getAllReaders(){
+			//logger is our own shit - dont get confused with $log
+			logger.output("getting all readers");
 			return [
 
 				{
@@ -57,7 +60,8 @@
 			getAllBooks:getAllBooks,
 			getAllReaders:getAllReaders
 		};
-
 	}
+	//injecting logger service
+	dataService.$inject = ['logger'];
 
 })();
