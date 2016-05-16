@@ -101,7 +101,8 @@ if you have defined an inheritance hieraracy in your code...createing an instanc
 
 ---for factory just create on .factory  and inject that name to our controller and make factory return some shit/..
 
-
+---changed service to factory -- gettting 
+angular.js:13550 Error: [$injector:undef] Provider 'logger' must return a value from $get factory method.
 
 
 
