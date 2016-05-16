@@ -38,10 +38,19 @@ app.provider('books', function(constants){
 //trying to inject badgeService --- wont work - onyl constants can be injected into configs..
 //Error: [$injector:unpr] Unknown provider: badgeService
 //This error is not only for value... it is error for factory or service too..
-///only inject provider or constant...
-app.config(function(booksProvider, constants, badgeService) {
+///only inject provider or constant..
+//angular creates underlying provider for our factory or service...
+//to demostrate - in config - it will automatically add provider prefix..
+//lets add dataService..
+app.config(function(booksProvider, constants, dataServiceProvider) {
 	booksProvider.setIncludeVersionInTitle(true);
 	console.log("Title from constants service from config: " + constants.APP_TITLE);
+	console.log(dataServiceProvider.$get);
+	//prints 
+	// enforcedReturnValue() {
+ //      var result = instanceInjector.invoke(factory, this);
+ //      if (isUndefined(result)) {
+ //        throw $injectorMinErr('undef', "Provider '{0}' must return a value …
 })
 
 })();
