@@ -30,8 +30,6 @@
 			];
 			//create new deferred object..
 			var deferred = $q.defer();
-			//defered object along with ssuccess and failure, also sends noticifaction back to the caller while the work is performed..
-			//client should write code to accept notifications..
 			$timeout(function(){
 
 				var successful = true;
@@ -46,10 +44,7 @@
 				}
 
 
-			}, 2000); ///even timeout function will also execute async
-			//so as getAllBooks is running ...will immediately execute return next ..
-			//deferred has a property named promise..
-			///caller will receive the promise and use it to set up callback functions..
+			}, 2000); 
 			return deferred.promise;
 
 		}
