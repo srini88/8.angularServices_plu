@@ -4,18 +4,20 @@
 	<title>
 		Angular Services in Depth
 	</title>
+	<script src="angular.js"></script>
+	<script src="js.js"></script>
+	<script src="books/booksController.js"></script>
 </head>
 <body >
 
 <div ng-controller = "BooksController as books">
 	
 <h1> Hello {{books.appName}}</h1>
+<h2> Hello {{books.appDesc}}</h2>
 
 </div>
 
 
-<script src="angular.js"></script>
-<script src="js.js"></script>
-<script src="books/booksController.js"></script>
+
 </body>
 </html>

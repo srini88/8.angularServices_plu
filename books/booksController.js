@@ -1,6 +1,6 @@
 (function (){
 
-console.log(angular.module('app')); //prints a big object
+//console.log(angular.module('app')); //prints a big object
 angular.module('app').
 controller('BooksController', BooksController);
 

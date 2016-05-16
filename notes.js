@@ -54,6 +54,46 @@ Provider must define a $get function..
 
 benefits of provider --- ability to configure underlying provider for the service....
 
+---------------------------reading again----------
+
+5 different ways to create services -- 
+Providers vs services --  
+Dependency annotations -- passing a service as a parameter to the controller, also apply the annotation code to make it intact for minification..
+
+1)All 5 fns are called on the built in $provide service , also exposed on the module object..
+
+1) provider ...knows to create the service -- 3 of 4 call this provider..
+2)factory - wrapper -- around provider...
+3) service - wrapper around factory..
+4) value - wrapper around factory...
+5) constant --- value and constant look similar...constant one in the list different from rest,., it does nto call factory or provider...
+
+
+services are designed to be injected in other components...$provide ..ships with angular...
+$provide.provider()
+
+$provide.provider('books', function(){
+		this.$get = function(){   --//very imp -- function assigned to this property will be called by angular
+		var appName = "nigga";
+		return {
+			appName:appName
+		};
+	};
+})
+
+benefit is ability to config the underlying provider for this service...main advantage using provider...(other 4 cannot do this)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
