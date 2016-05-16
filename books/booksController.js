@@ -15,7 +15,17 @@ function BooksController(books, dataService, logger, badgeService, $q){
 
 	var booksPromise = dataService.getAllBooks();
 	var readersPromise = dataService.getAllReaders();
-
+	//extra stuff --- dealing iwth individual promises before calling all
+	booksPromise.then(function (data){
+		console.log("from then: " , data);
+	}).catch(function (fail){
+		console.log("individual fail books " , fail);
+	});
+	readersPromise.then(function (data){
+		console.log("readers from then: " , data);
+	}).catch(function (fail){
+		console.log("individual fail readers" , fail);
+	});
 	// passing an array of promises..
 	//then will be called if all of them are resolved..
 	$q.all([booksPromise, readersPromise])

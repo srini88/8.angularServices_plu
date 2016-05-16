@@ -44,7 +44,7 @@
 				}
 
 
-			}, 01); 
+			}, 2000); 
 			return deferred.promise;
 
 		}
@@ -74,7 +74,7 @@
 			var deferred = $q.defer();
 
 			$timeout(function(){
-				var success = false;
+				var success = true;
 				if (success){
 					deferred.resolve(readersArray);
 				}
@@ -83,7 +83,7 @@
 				}
 				
 
-			}, 1000);
+			}, 2000);
 			return deferred.promise;
 
 
