@@ -87,6 +87,20 @@ provider is low  level  --- it is configurable during the module configuration p
 
 
 allow some configuration now...
+----factory----
+if you dont need to configure the underlying provider obnject...
+
+---service...
+calls factory which calls provider..
+treats function it is passed as  a constructor...
+executes constructor fn with new operator..
+you would need service instead of factory - if you specifically needed your function to be trated as a contructor and called with a new oeprator...
+
+if you have defined an inheritance hieraracy in your code...createing an instance with new -  makes sure your instantiated obj properly inherited from its prototypes...
+
+
+---for factory just create on .factory  and inject that name to our controller and make factory return some shit/..
+
 
 
 
