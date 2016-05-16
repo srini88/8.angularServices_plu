@@ -17,11 +17,9 @@
 			var promises = [];
 			$scope.output =[];
 			items.forEach(function(el){
-				return promises.push($http.get(el)); //fills the promises[] array
+				return promises.push($http.get(el).catch(function(e){console.log("err individual failed ",e.data.text)})); //fills the promises[] array
 			});
-	
-			var ignore = function(x) { return x.catch(function(e){console.log("error individual failed ",e)}); } // To only accept responses with status 200, if a promise returns a bad status code, it will be caught here and the rest of the promises will move on
-			var all = $q.all( promises.map(ignore) ); //chaining promises array and passing it to $q.all 
+			var all = $q.all( promises ); //chaining promises array and passing it to $q.all 
 			all.then(function success(d){
 				console.log("Im printing d", d); //prints data array from all promises
 				
@@ -31,7 +29,7 @@
 					$scope.output.push(d[i].data.text);
 					}
 				}
-				console.log(res);
+				console.log($scope.output);
 
 				window.alert($scope.output.join(""));  //alerting the final output on the screen
 			}).catch(function(reason){
