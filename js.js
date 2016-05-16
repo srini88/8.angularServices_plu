@@ -1,28 +1,29 @@
 (function(){
 
 var app = angular.module('app',[]);
-//config and provide service...provide is built in --service...injector knows this shit..
 
-//adding config method and passing in the function $provide which is the fn that will execute to configure the module..
-app.config(function($provide){
-	///calling the provider fn on provide..
-	///books is the name of the service...
-	///2nd para - fn that defines the provider...
-	////must have $get... every provider must have $get 
-	///dollar get - very imp and just this
-	$provide.provider('books', function(){  //this will be called from booksController -- not from view directly...
-		this.$get = function(){
-			var appName = "book logger";
-			var appDesc = "track which books you read";
-			return {
-				appName :appName,
-				appDesc : appDesc
-			};
+//dont have to inject provide service into config and then call provider 
+/// provider is also exposed directly on module object..
 
+app.provider('books', function(){
+	this.$get = function(){
+		var appName = "book logger";
+		var appDesc = "track which books you read";
+		var version = '1.0';
+		return {
+			appName :appName,
+			appDesc : appDesc
 		};
+	};
+	//to expose some config points..
+	//setter is defined on this..
+	///configure internal values that may controlled what is returned by the get function
+	var includeVersionInTitle = false;
+	this.setIncludeVersionInTitle = function(value){
+		includeVersionInTitle = value;
+	};
 
-	})
-})
+});
 
 
 

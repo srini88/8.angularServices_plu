@@ -83,7 +83,10 @@ $provide.provider('books', function(){
 
 benefit is ability to config the underlying provider for this service...main advantage using provider...(other 4 cannot do this)
 
+provider is low  level  --- it is configurable during the module configuration phase...
 
+
+allow some configuration now...
 
 
 
