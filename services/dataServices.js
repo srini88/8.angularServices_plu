@@ -44,7 +44,7 @@
 				}
 
 
-			}, 2000); 
+			}, 01); 
 			return deferred.promise;
 
 		}
@@ -83,7 +83,7 @@
 				}
 				
 
-			}, 2000);
+			}, 1000);
 			return deferred.promise;
 
 
