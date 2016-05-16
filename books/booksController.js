@@ -25,20 +25,26 @@ function BooksController(books, dataService, logger, badgeService){
 	///then returns a promise...call the catch on its return value..
 	/// cb provided to the catch , can handle rejections from intial promise return from service, as well as exceptions thrown in the succss handler passed to the then function...
 	dataService.getAllBooks()
-		.then(getBooksSuccess, getBooksError, getBooksNotification);
+		.then(getBooksSuccess, null, getBooksNotification)
+		.catch(errorCallback);
 
 	// value passed in this books will be the value passed in the resolve function on the deferred object which is booksArray
 	function getBooksSuccess(books){
-		throw "error in success handler";  //you will see this in console in red color...
+		throw "error in success handler";  //you will see this in console in red color...need to handle it...
 		vm.allBooks = books;
 	}
 
-	function getBooksError(reason){
-		console.log(reason);
+	// function getBooksError(reason){
+	// 	console.log(reason);
+	// }
+	//must robust way than to deal with error callback 2nd para
+	function errorCallback(errorMsg){
+		console.log("error msg from catch ", errorMsg);
 	}
 	function getBooksNotification(notification){
 		console.log("Notification msgs: "+ notification);
 	}
+
 
 
 	vm.allReaders = dataService.getAllReaders();
