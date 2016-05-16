@@ -5,11 +5,12 @@ var app = angular.module('app',[]);
 //dont have to inject provide service into config and then call provider 
 /// provider is also exposed directly on module object..
 
-app.provider('books', function(){
+//inside the booksProvider doing DI with constants..
+app.provider('books', function(constants){
 	this.$get = function(){
-		var appName = "book logger";
-		var appDesc = "track which books you read";
-		var version = '1.0';
+		var appName = constants.APP_TITLE;
+		var appDesc = constants.APP_DESCRIPTION;
+		var version = constants.APP_VERSION;
 
 		if (includeVersionInTitle){
 			appName += ' ' + version;

@@ -104,6 +104,28 @@ if you have defined an inheritance hieraracy in your code...createing an instanc
 ---changed service to factory -- gettting 
 angular.js:13550 Error: [$injector:undef] Provider 'logger' must return a value from $get factory method.
 
+----value and constant services---
+
+value services --- shorthand for factory with no parameters -- 
+
+if you dont need to inject anuthiong into factory function you could use value instead... 
+cannot be injected into a module configuration function 
+can be overriden by an angularJS decorator...
+
+
+	constant ---  weird shit... simply registers service with injector, no factory/provider calls.... 
+	can be injected into a module configuration function 
+	-- cannot be overriden by an angularJS decorator..
+
+also know decorators - modfify or override behavior of existing service..
+
+
+
+
+
+
+
+
 
 
 

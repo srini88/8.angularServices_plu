@@ -4,7 +4,7 @@
 	///// when doing with inheritance shit..
 
 	angular.module('app')
-	.factory('logger', BookAppLogger);
+	.service('logger', BookAppLogger);
 	//the above service will create BookAppLogger with new operator
 	/// which guarentees prototype hierarcy will be traversed correctly.
 
