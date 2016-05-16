@@ -16,19 +16,22 @@
 			console.log(items);
 			var promises = [];
 			$scope.output =[];
-			items.forEach(function(el){
-				return promises.push($http.get(el).catch(function(e){console.log("err individual failed ",e.data.text)})); 
+			items.forEach(function(el, index){
+				return promises.push($http.get(el)
+					.then(function (res){
+						console.log("index: "+ index + " el: "+ res.data.text);
+						$scope.output[index] = res.data.text;
+					})
+
+					.catch(function(e){console.log("err individual failed ",e.data.text)})); 
 			});
+			console.log(promises); //prints promise, promise,promise...
+
 			var all = $q.all( promises ); //chaining promises array and passing it to $q.all 
 			all.then(function success(d){
 				console.log("Im printing d", d); //prints data array from all promises
 				
 				console.log(d.length);
-				for (var i = 0; i < d.length; i++){
-					if (d[i]){  //to prevent cannot read data of undefined
-					$scope.output.push(d[i].data.text);
-					}
-				}
 				console.log($scope.output);
 
 				window.alert($scope.output.join(""));  //alerting the final output on the screen
