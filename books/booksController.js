@@ -24,13 +24,17 @@ function BooksController(books, dataService, logger, badgeService){
 	// but advantage is when you have chaining...
 	///then returns a promise...call the catch on its return value..
 	/// cb provided to the catch , can handle rejections from intial promise return from service, as well as exceptions thrown in the succss handler passed to the then function...
+
+	//finally, chain it as well to then and catch ..
+	///define a cb that will execute regardless of resolve or reject.
+	///for clean up code...
 	dataService.getAllBooks()
 		.then(getBooksSuccess, null, getBooksNotification)
-		.catch(errorCallback);
+		.catch(errorCallback)
+		.finally(getAllBooksComplete);
 
 	// value passed in this books will be the value passed in the resolve function on the deferred object which is booksArray
 	function getBooksSuccess(books){
-		throw "error in success handler";  //you will see this in console in red color...need to handle it...
 		vm.allBooks = books;
 	}
 
@@ -44,7 +48,9 @@ function BooksController(books, dataService, logger, badgeService){
 	function getBooksNotification(notification){
 		console.log("Notification msgs: "+ notification);
 	}
-
+	function getAllBooksComplete(){
+		console.log("getAllBooks has completed ");
+	}
 
 
 	vm.allReaders = dataService.getAllReaders();
