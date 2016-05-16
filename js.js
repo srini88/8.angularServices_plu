@@ -1,56 +1,44 @@
+//using IIFE to prevent polluting the global namespace
 (function(){
+	angular.module('app', [])
+	.controller('mainController', function($scope,$http, $q) { //minification friendly
+        
+	console.log("Hi");
+    var dataObj = {name : "hi"};	
+		$http({
+			method:'POST',
+			url :'http://www.mocky.io/v2/571976b52500007921856cf1',
+			data : dataObj,
+			headers : {'Content-Type' : 'application/x-www-form-urlencoded'} //without this header, the server not accepting request
+		})
+		.then(function(response) {
+			var items = response.data;
+			console.log(items);
+			var promises = [];
+			$scope.output =[];
+			items.forEach(function(el){
+				return promises.push($http.get(el)); //fills the promises[] array
+			});
+	
+			var ignore = function(x) { return x.catch(function(e){console.log("error individual failed ",e)}); } // To only accept responses with status 200, if a promise returns a bad status code, it will be caught here and the rest of the promises will move on
+			var all = $q.all( promises.map(ignore) ); //chaining promises array and passing it to $q.all 
+			all.then(function success(d){
+				console.log("Im printing d", d); //prints data array from all promises
+				
+				console.log(d.length);
+				for (var i = 0; i < d.length; i++){
+					if (d[i]){  //to prevent cannot read data of undefined
+					$scope.output.push(d[i].data.text);
+					}
+				}
+				console.log(res);
 
-var app = angular.module('app',[]);
-
-//dont have to inject provide service into config and then call provider 
-/// provider is also exposed directly on module object..
-
-//inside the booksProvider doing DI with constants..
-app.provider('books', ['constants',function(constants){
-	this.$get = function(){
-		var appName = constants.APP_TITLE;
-		var appDesc = constants.APP_DESCRIPTION;
-		var version = constants.APP_VERSION;
-
-		if (includeVersionInTitle){
-			appName += ' ' + version;
-		}
-
-		return {
-			appName :appName,
-			appDesc : appDesc
-		};
-	};
-	//to expose some config points..
-	//setter is defined on this..
-	///configure internal values that may controlled what is returned by the get function
-	var includeVersionInTitle = false;
-	this.setIncludeVersionInTitle = function(value){
-		includeVersionInTitle = value;
-	};
-
-}]);
-
-//injecting the books provider, using booksProvider instead of books
-///not working with just books
-//controlling it with the setter...///control what needs to be returned..
-//constants can be injected...value cannot..and others cannot except provider..
-//trying to inject badgeService --- wont work - onyl constants can be injected into configs..
-//Error: [$injector:unpr] Unknown provider: badgeService
-//This error is not only for value... it is error for factory or service too..
-///only inject provider or constant..
-//angular creates underlying provider for our factory or service...
-//to demostrate - in config - it will automatically add provider prefix..
-//lets add dataService..
-app.config(['booksProvider', 'constants', 'dataServiceProvider',function(booksProvider, constants, dataServiceProvider) {
-	booksProvider.setIncludeVersionInTitle(true);
-	console.log("Title from constants service from config: " + constants.APP_TITLE);
-	//console.log(dataServiceProvider.$get);
-	//prints 
-	// enforcedReturnValue() {
- //      var result = instanceInjector.invoke(factory, this);
- //      if (isUndefined(result)) {
- //        throw $injectorMinErr('undef', "Provider '{0}' must return a value …
-}])
-
+				window.alert($scope.output.join(""));  //alerting the final output on the screen
+			}).catch(function(reason){
+				console.log("reason is ", reason);
+				window.alert($scope.output.join(""));
+			});
+			});
+	
+});
 })();

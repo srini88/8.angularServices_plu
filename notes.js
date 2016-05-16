@@ -192,7 +192,8 @@ perform work ..
 when the work is complete, finish successfully... use defererd api to signal client with results. 
 
 
-
+--------------------------
+I believe since the promise library is based on Q implementation, as soon as the first promise gets rejected, the reject callback is called with the error. It does not wait for other promises to resolved. 
 
 
 
