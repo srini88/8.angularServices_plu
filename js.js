@@ -10,6 +10,11 @@ app.provider('books', function(){
 		var appName = "book logger";
 		var appDesc = "track which books you read";
 		var version = '1.0';
+
+		if (includeVersionInTitle){
+			appName += ' ' + version;
+		}
+
 		return {
 			appName :appName,
 			appDesc : appDesc
@@ -25,6 +30,11 @@ app.provider('books', function(){
 
 });
 
-
+//injecting the books provider, using booksProvider instead of books
+///not working with just books
+//controlling it with the setter...///control what needs to be returned..
+app.config(function(booksProvider) {
+	booksProvider.setIncludeVersionInTitle(true);
+})
 
 })();
