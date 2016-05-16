@@ -110,6 +110,7 @@ value services --- shorthand for factory with no parameters --
 
 if you dont need to inject anuthiong into factory function you could use value instead... 
 cannot be injected into a module configuration function 
+////the other can be injected anywhere..
 can be overriden by an angularJS decorator...
 
 

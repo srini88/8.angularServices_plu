@@ -35,7 +35,11 @@ app.provider('books', function(constants){
 ///not working with just books
 //controlling it with the setter...///control what needs to be returned..
 //constants can be injected...value cannot..and others cannot except provider..
-app.config(function(booksProvider, constants) {
+//trying to inject badgeService --- wont work - onyl constants can be injected into configs..
+//Error: [$injector:unpr] Unknown provider: badgeService
+//This error is not only for value... it is error for factory or service too..
+///only inject provider or constant...
+app.config(function(booksProvider, constants, badgeService) {
 	booksProvider.setIncludeVersionInTitle(true);
 	console.log("Title from constants service from config: " + constants.APP_TITLE);
 })
