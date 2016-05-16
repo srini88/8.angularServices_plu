@@ -54,7 +54,7 @@
 
 		}
 		function getAllReaders(){
-			return [
+			var readersArray = [
 
 				{
 					reader_id :1,
@@ -75,7 +75,25 @@
 					totalMinutesRead :600
 				}
 			];
+
+			var deferred = $q.defer();
+
+			$timeout(function(){
+				var success = true;
+				if (success){
+					deferred.resolve(readersArray);
+				}
+				else{
+					deferred.reject("failed to fecth readers");
+				}
+				
+
+			}, 2000);
+			return deferred.promise;
+
 		}
+
+
 
 		return {
 			getAllBooks:getAllBooks,

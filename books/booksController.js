@@ -52,8 +52,14 @@ function BooksController(books, dataService, logger, badgeService){
 		console.log("getAllBooks has completed ");
 	}
 
+	dataService.getAllReaders()
+	.then(function (response){
+		vm.allReaders = response;
+	}).catch(function (fail){
+		console.log("failed miserably catch ");
+	})
 
-	vm.allReaders = dataService.getAllReaders();
+	//vm.allReaders = dataService.getAllReaders();
 	//all Readers returns objs with reading minutes, use that and call the badgeservice 
 
 	vm.getBadge = badgeService.retrieveBadge;  //not passing in minutes here,,because allReaders has all...retrievebadge is for one..so use it in the view..
