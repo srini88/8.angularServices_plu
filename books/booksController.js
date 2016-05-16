@@ -16,13 +16,23 @@ function BooksController(books, dataService, logger, badgeService){
 	//our new version returns a promise..
 	// then is available on all promise objects..
 	///separate cb for handling notifications...
+
+	//better way to handle the rejection of a promise..
+	//service.returnsPromise()
+	//in addition to then - promise also has catch ..
+	// you pass to it a fn - as much the same way as the 2nd para as then ..
+	// but advantage is when you have chaining...
+	///then returns a promise...call the catch on its return value..
+	/// cb provided to the catch , can handle rejections from intial promise return from service, as well as exceptions thrown in the succss handler passed to the then function...
 	dataService.getAllBooks()
 		.then(getBooksSuccess, getBooksError, getBooksNotification);
 
 	// value passed in this books will be the value passed in the resolve function on the deferred object which is booksArray
 	function getBooksSuccess(books){
+		throw "error in success handler";  //you will see this in console in red color...
 		vm.allBooks = books;
 	}
+
 	function getBooksError(reason){
 		console.log(reason);
 	}
