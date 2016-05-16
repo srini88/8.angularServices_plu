@@ -121,6 +121,7 @@ also know decorators - modfify or override behavior of existing service..
 
 
 
+--constant - can be injected into module's config function 
 
 
 

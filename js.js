@@ -34,8 +34,10 @@ app.provider('books', function(constants){
 //injecting the books provider, using booksProvider instead of books
 ///not working with just books
 //controlling it with the setter...///control what needs to be returned..
-app.config(function(booksProvider) {
+//constants can be injected...value cannot..and others cannot except provider..
+app.config(function(booksProvider, constants) {
 	booksProvider.setIncludeVersionInTitle(true);
+	console.log("Title from constants service from config: " + constants.APP_TITLE);
 })
 
 })();
