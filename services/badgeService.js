@@ -3,7 +3,7 @@
 
 	angular.module ('app')
 	//wrong needs to be an object or a name - the second para
-	.value('badgeService', retrieveBadge);  //object literal just like constant 
+	.value('badgeService', "badgeNigga");  //object literal just like constant 
 
 
 	function retrieveBadge(minutesRead){

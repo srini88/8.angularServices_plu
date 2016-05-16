@@ -16,9 +16,10 @@ function BooksController(books, dataService, logger, badgeService){
 	vm.allReaders = dataService.getAllReaders();
 	//all Readers returns objs with reading minutes, use that and call the badgeservice 
 
-	vm.getBadge = badgeService.retrieveBadge;  //not passing in minutes here,,because allReaders has all...retrievebadge is for one..so use it in the view..
+	vm.getBadge = badgeService;  //not passing in minutes here,,because allReaders has all...retrievebadge is for one..so use it in the view..
 
 	//calling output on the mother prototype..not the logger property..its mother..
+	console.log(vm.getBadge);  //workins now - prints badgeNigga
 	logger.output("BooksController has been created.."); 
 }
 
