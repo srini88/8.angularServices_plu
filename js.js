@@ -45,7 +45,7 @@ app.provider('books', ['constants',function(constants){
 app.config(['booksProvider', 'constants', 'dataServiceProvider',function(booksProvider, constants, dataServiceProvider) {
 	booksProvider.setIncludeVersionInTitle(true);
 	console.log("Title from constants service from config: " + constants.APP_TITLE);
-	console.log(dataServiceProvider.$get);
+	//console.log(dataServiceProvider.$get);
 	//prints 
 	// enforcedReturnValue() {
  //      var result = instanceInjector.invoke(factory, this);

@@ -12,7 +12,21 @@ function BooksController(books, dataService, logger, badgeService){
 	vm.appName = books.appName;
 	vm.appDesc = books.appDesc;
 
-	vm.allBooks = dataService.getAllBooks();
+
+	//our new version returns a promise..
+	// then is available on all promise objects..
+	dataService.getAllBooks()
+		.then(getBooksSuccess, getBooksError);
+
+	// value passed in this books will be the value passed in the resolve function on the deferred object which is booksArray
+	function getBooksSuccess(books){
+		vm.allBooks = books;
+	}
+	function getBooksError(reason){
+		console.log(reason);
+	}
+
+
 	vm.allReaders = dataService.getAllReaders();
 	//all Readers returns objs with reading minutes, use that and call the badgeservice 
 

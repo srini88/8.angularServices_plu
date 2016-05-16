@@ -165,12 +165,31 @@ using $inject
 	dataService.$inject = ['logger'];
 
 
+-----------common built in services...----
+
+promises and $q service...
+$cookies, $cookieStore and $log 
+
+promise  $q service is often refeered as promise library..
+in JS , promises are objects whcih represent the pending result of an async operation...
 
 
 
+$q service - provides an API for promises, also API for deferred objects that return promises to the calling code and signal them with results when async operation is complete...
 
 
+client - initiate async call to service 
+Use promise API to configuyre callback functions..
 
+then client can execute callback functions...
+
+
+Service - create deferred object 
+2 return promise to client immediately. .
+
+
+perform work ..
+when the work is complete, finish successfully... use defererd api to signal client with results. 
 
 
 
