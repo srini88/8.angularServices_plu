@@ -42,8 +42,11 @@ app.provider('books', ['constants',function(constants){
 //angular creates underlying provider for our factory or service...
 //to demostrate - in config - it will automatically add provider prefix..
 //lets add dataService..
-app.config(['booksProvider','$routeProvider',function(booksProvider, $routeProvider) {
+app.config(['booksProvider','$routeProvider','$logProvider',function(booksProvider, $routeProvider, $logProvider) {
 	booksProvider.setIncludeVersionInTitle(true);
+
+	//making config change...debug apprears in bulue..by default debug is enabled.... this making it false...so $log.debug() calls wont be shown,.
+	$logProvider.debugEnabled(false);
 	
 	$routeProvider
 		.when('/',{

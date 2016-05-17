@@ -295,5 +295,6 @@ i want to aadd new features to app , able to specify a particular book as the fa
 
 store both of them in cookies...
 
+---lets see how to make config change in the log service.... to configure services we inject the associated provider in the module's config function..
 
 
