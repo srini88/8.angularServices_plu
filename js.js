@@ -1,6 +1,6 @@
 (function(){
 
-var app = angular.module('app',[]);
+var app = angular.module('app',['ngRoute']);
 
 //dont have to inject provide service into config and then call provider 
 /// provider is also exposed directly on module object..
@@ -42,15 +42,25 @@ app.provider('books', ['constants',function(constants){
 //angular creates underlying provider for our factory or service...
 //to demostrate - in config - it will automatically add provider prefix..
 //lets add dataService..
-app.config(['booksProvider', 'constants', 'dataServiceProvider',function(booksProvider, constants, dataServiceProvider) {
+app.config(['booksProvider','$routeProvider',function(booksProvider, $routeProvider) {
 	booksProvider.setIncludeVersionInTitle(true);
-	console.log("Title from constants service from config: " + constants.APP_TITLE);
-	//console.log(dataServiceProvider.$get);
-	//prints 
-	// enforcedReturnValue() {
- //      var result = instanceInjector.invoke(factory, this);
- //      if (isUndefined(result)) {
- //        throw $injectorMinErr('undef', "Provider '{0}' must return a value …
+	
+	$routeProvider
+		.when('/',{
+			//by giving /templates.books.html - it is going to root..abs path
+			//the below is relative path
+			templateUrl :'templates/books.html',
+			controller : 'BooksController',
+			controllerAs :'books'
+		})
+		.when('/AddBook',{
+			templateUrl :'/templates/addBook.html',
+			controller : 'AddBookController',
+			controllerAs :'addBook'
+		})
+
+
+
 }])
 
 })();

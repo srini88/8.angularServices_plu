@@ -5,56 +5,20 @@
 		Angular Services in Depth
 	</title>
 	<script src="angular.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min.js"></script>
 	<script src="js.js"></script>
 	<script src="books/booksController.js"></script>
 	<script src="services/dataServices.js"></script>
 	<script src="services/loggerService.js"></script>
 	<script src="services/constantService.js"></script>
 	<script src="services/badgeService.js"></script>
+
 </head>
 <body >
 
-<div ng-controller = "BooksController as books">
-	
-	<h1> Hello {{books.appName}}</h1>
-	<h2> Hello {{books.appDesc}}</h2>
-	<h3>All books returned from factory getAllBooks() </h3>
-	<div>
-		
-	<ul>
-		<li ng-repeat = "book in books.allBooks">
-			
-		{{book.book_id}},
-		{{book.title}},
-		{{book.author}},
-		{{book.year_published}}
-		</li>
+<h1>Book Logger</h1>
 
-	</ul>
-
-	</div>
-	<h3>All readers returned from factory getAllReaders() </h3>
-	<div>
-		
-	<ul>
-		<li ng-repeat = "reader in books.allReaders">
-			
-		{{reader.reader_id}},
-		{{reader.name}},
-		{{reader.weeklyReadingGoal}},
-		{{reader.totalMinutesRead}},
-		{{books.getBadge(reader.totalMinutesRead)}}
-		</li>
-
-	</ul>
-
-	</div>
-
-
-
-
-</div>
-
+<div ng-view></div>
 
 
 </body>

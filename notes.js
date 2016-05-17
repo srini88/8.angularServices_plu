@@ -197,26 +197,47 @@ I believe since the promise library is based on Q implementation, as soon as the
 
 
 
+------------------routing behavior single page app 
+
+$routeProvider to configure mapping of controllers and views to URLs 
+
+$route watches the URL and directs browser to the correct route..
+$routeParams to capture URL parameters...
 
 
+$route and $routeProvider configuration..
+
+angular.module('ngRoute',['ng']).provider('$route', $RouteProvider)
+
+only services created with provider fn are configureable with module's config function ..routeService is configured with provider fn --
+
+$RouteProvider into the config function in order to configure the route...
+
+app,cofig(routeProvider)
+
+$routeProvider.when () .when().otherwise()
+
+$routeParams --- 
+
+.when('/Editbook/:bookID')
 
 
+have to inject the $routeParams service into our controller...
+
+var myparam = $routeParams.bookID ;
+
+if you want 2 parameters ---  .when('/Editbook/:bookID/:para2')
 
 
+1) var app = angular.module('app',['ngRoute']); ngRoute is the name of the module...
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+2 ) $routeProvider
+		.when('/',{
+			templateUrl :'/app/templates/books.html',
+			controller : 'BooksController',
+			controllerAs :'books'
+		})
 
 
 
