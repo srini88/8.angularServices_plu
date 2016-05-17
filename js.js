@@ -64,7 +64,10 @@ app.config(['booksProvider','$routeProvider',function(booksProvider, $routeProvi
 			controllerAs :'bookEditor',	//controllerAs 
 			resolve :{
 				//this way when you click on the link, it wont go immediately, it will wait until the promise gets resolved..
+				//will apply to the edit link only....so throw an exception here to try $routeChangeError
+
 				books : function(dataService){
+					throw "intentionally throwing to try $routeChangeError";
 					return dataService.getAllBooks();
 				}
 			}
@@ -85,6 +88,8 @@ app.run(['$rootScope', function($rootScope){
 		console.log(previous);
 	});
 	$rootScope.$on('$routeChangeError', function(event, current, previous, rejection){
+		//youwould see Object {name: "$routeChangeError", targetScope: Scope, defaultPrevented: false, currentScope: Scope} 
+		///because of throw..
 		console.log("error changing routes");
 		console.log(event);
 		console.log(current);
