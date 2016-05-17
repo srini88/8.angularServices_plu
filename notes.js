@@ -241,4 +241,7 @@ if you want 2 parameters ---  .when('/Editbook/:bookID/:para2')
 
 
 
+<a href="#/addBook">Add New Books!</a>  - linking to new route...
+
+//angular config expects client side routes begin with # symbol
 

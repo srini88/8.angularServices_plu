@@ -53,8 +53,8 @@ app.config(['booksProvider','$routeProvider',function(booksProvider, $routeProvi
 			controller : 'BooksController',
 			controllerAs :'books'
 		})
-		.when('/AddBook',{
-			templateUrl :'/templates/addBook.html',
+		.when('/addBook',{
+			templateUrl :'templates/addBook.html',
 			controller : 'AddBookController',
 			controllerAs :'addBook'
 		})
