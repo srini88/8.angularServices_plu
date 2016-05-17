@@ -340,7 +340,15 @@ update - PUT  if successful, returns HTTp 204 no content...
 Delecte - if successful, returns HTTP 204 NO content..
 
 
+GET should be used to retrieve a resource. This operation should be idempotent, meaning it should not change any state on the server.
 
+POST should be used to add new information to the server. This is usually performed on a URL that represents a "container" of resources. The POST will add a new resource to this container.
+
+PUT should be used to update an existing resource.
+
+DELETE should be obvious.
+
+Run this code in a console or from anywhere (CORS and JSONP supported).
 
 
 

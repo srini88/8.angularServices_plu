@@ -1,51 +1,21 @@
 (function(){
 	angular.module('app')
-	//calling factory..
-	//1st para - name for the service..
-	.factory('dataService', ['$q','$timeout', dataService]);
-
-	// have to create and return our serivce..this is the fn that will be attached to the $get property when provider is called behind the fields..
-	function dataService($q, $timeout){
-
+	.factory('dataService', ['$q','$timeout','$http','constants', dataService]);
+	
+	function dataService($q, $timeout, $http, constants){
+		//making actual calls to web service now...using postman client..
+		// http://jsonplaceholder.typicode.com/
+		//keeping implementation details out of my controller, so putting then here ...also putting then in the calling code..as we are using return statements..
 		function getAllBooks(){
-			var booksArray =  [
-				{
-					book_id:1,
-					title:'Harry Potter and Deatly Hallows',
-					author: 'J.K.Rowling',
-					year_published:2000
-				},
-				{
-					book_id:2,
-					title:'Cat in the Hat',
-					author: 'Dr.Seuss',
-					year_published:1965
-				},
-				{
-					book_id:3,
-					title:'Encyclopedia Brown',
-					author: 'Donald Sobol',
-					year_published:1969
+			return $http({
+				method :'GET',
+				url:'http://jsonplaceholder.typicode.com/users/',
+				headers :{
+					'PS-BookLogger-Version' : constants.APP_VERSION
 				}
-			];
-			//create new deferred object..
-			var deferred = $q.defer();
-			$timeout(function(){
-
-				var successful = true;
-				if (successful){
-					deferred.notify("Just getting started gathering books..");
-					deferred.notify("Almost done gathering books..");
-					deferred.resolve(booksArray);
-				}
-				else
-				{	//failed and report problem -- to the caller..
-					deferred.reject("error retrieving the books.");
-				}
-
-
-			}, 1000); 
-			return deferred.promise;
+			})
+			.then(sendResponseData)
+			.catch(sendGetBooksError);
 
 		}
 		function getAllReaders(){
@@ -88,8 +58,6 @@
 
 
 		}
-
-
 
 		return {
 			getAllBooks:getAllBooks,
