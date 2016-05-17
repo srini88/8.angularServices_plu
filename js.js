@@ -58,6 +58,13 @@ app.config(['booksProvider','$routeProvider',function(booksProvider, $routeProvi
 			controller : 'AddBookController',
 			controllerAs :'addBook'
 		})
+		.when('/EditBook/:bookID',{  //need to use routeParams service..
+			templateUrl :'templates/editBook.html',
+			controller : 'EditBookController',
+			controllerAs :'bookEditor'	//controllerAs 
+		})
+		//Prior to 1.3 you had to pass route Config object to Otherwise..
+		.otherwise('/');
 
 
 
