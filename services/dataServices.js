@@ -6,6 +6,7 @@
 		//making actual calls to web service now...using postman client..
 		// http://jsonplaceholder.typicode.com/
 		//keeping implementation details out of my controller, so putting then here ...also putting then in the calling code..as we are using return statements..
+		//this way calling controller is unaware how the data is retrived..
 		function getAllBooks(){
 			return $http({
 				method :'GET',
@@ -16,6 +17,14 @@
 			})
 			.then(sendResponseData)
 			.catch(sendGetBooksError);
+
+			function sendResponseData(response){
+				console.log( response.data);
+				return response.data;
+			}
+			function sendGetBooksError(response){
+				return $q.reject("Error retrieving books(s), HTTP status: " + response.status);
+			}
 
 		}
 		function getAllReaders(){

@@ -4,16 +4,16 @@
 	<ul>
 		<li ng-repeat = "book in books.allBooks">
 			
-		{{book.book_id}},
-		{{book.title}},
-		{{book.author}},
-		{{book.year_published}} <a href="#/EditBook/{{book.book_id}}">Edit</a>
+		{{book.id}},
+		{{book.name}},
+		{{book.username}},
+		{{book.website}} <a href="#/EditBook/{{book.id}}">Edit</a>
 		</li>
 
 	</ul>
 	</div>
 	<a href="#/addBook">Add New Books!</a>
-	<a href="#/EditBook/{{books.lastEdited.book_id}}">Open last Edited</a>
+	<a href="#/EditBook/{{books.lastEdited.id}}">Open last Edited</a>
 	<h3>All readers returned from factory getAllReaders() </h3>
 	<div>
 	<ul>

@@ -7,11 +7,13 @@
 		var vm= this;
 
 		vm.currentBook = books.filter(function(item){
-			return item.book_id == $routeParams.bookID;
+			return item.id == $routeParams.bookID;
 		})[0];
 
+		console.log(vm.currentBook);
+
 		vm.setAsFavorite = function(){
-			$cookies.favoriteBook = vm.currentBook.title;	
+			$cookies.favoriteBook = vm.currentBook.name;	
 		}
 
 		$cookieStore.put('lastEdited', vm.currentBook);

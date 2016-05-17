@@ -11,20 +11,18 @@ function BooksController(books, dataService, logger, badgeService, $q, $cookies,
 	vm.appName = books.appName;
 	vm.appDesc = books.appDesc;
 
-	var booksPromise = dataService.getAllBooks();
-	var readersPromise = dataService.getAllReaders();
+	dataService.getAllBooks()
+		.then(getBooksSuccess)
+		.catch(errorCallback);
 
-	$q.all([booksPromise, readersPromise])
-		.then(getAllDataSuccess)
-		.catch(getAllDataError);
+	function getBooksSuccess(books){
+		vm.allBooks = books;
+	}
+	function errorCallback(errorMsg){
+		console.log("couldn't get from server " + errorMsg);
+	}
 
-	function getAllDataSuccess(dataArray){
-		vm.allBooks = dataArray[0];
-		vm.allReaders = dataArray[1];
-	}
-	function getAllDataError(reason){
-		console.log(reason);
-	}
+
 	vm.getBadge = badgeService.retrieveBadge; 
 	logger.output("BooksController has been created.."); 
 	vm.favoriteBook = $cookies.favoriteBook; 
