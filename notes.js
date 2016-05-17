@@ -267,3 +267,28 @@ use $rootScope.$on to specify event types to listen for...
 
 4 events. 
 routeChangeStarts....routeChangeSuccess.. routeChangeError -- routeUpdate 
+
+----------$cookies and $cookieStore...
+
+cookies conveniet way to store small bit of data on the client..
+
+available in the ngCookies module...
+
+to store string value...
+
+$cookies to read/write simple  strings... as properties on the service..
+
+Use $cookieStore for storing object... 
+
+it serirallizes and derializes to and from json ... get(key), put(key, value), remove(key)
+
+dont use cookies by means of sharing data amout the controller...better way to solve that problem using custom services...
+
+$log --- log() info() warn() error() debug()
+
+you can configure whether or not calls to debug() will be shown in the console using the $logProvider...during production disable debug calls...in one stop ...
+
+logProvider ---  can be made considerablymore interesting using decorators...
+
+
+

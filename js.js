@@ -67,7 +67,7 @@ app.config(['booksProvider','$routeProvider',function(booksProvider, $routeProvi
 				//will apply to the edit link only....so throw an exception here to try $routeChangeError
 
 				books : function(dataService){
-					throw "intentionally throwing to try $routeChangeError";
+					// throw "intentionally throwing to try $routeChangeError";
 					return dataService.getAllBooks();
 				}
 			}
