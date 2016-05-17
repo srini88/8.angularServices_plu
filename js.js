@@ -61,7 +61,13 @@ app.config(['booksProvider','$routeProvider',function(booksProvider, $routeProvi
 		.when('/EditBook/:bookID',{  //need to use routeParams service..
 			templateUrl :'templates/editBook.html',
 			controller : 'EditBookController',
-			controllerAs :'bookEditor'	//controllerAs 
+			controllerAs :'bookEditor',	//controllerAs 
+			resolve :{
+				//this way when you click on the link, it wont go immediately, it will wait until the promise gets resolved..
+				books : function(dataService){
+					return dataService.getAllBooks();
+				}
+			}
 		})
 		//Prior to 1.3 you had to pass route Config object to Otherwise..
 		.otherwise('/');

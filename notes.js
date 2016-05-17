@@ -245,3 +245,25 @@ if you want 2 parameters ---  .when('/Editbook/:bookID/:para2')
 
 //angular config expects client side routes begin with # symbol
 
+-------resolve property - very useful 
+
+will let you specify list of deependecenies injecteing into the controller when changing the route...
+most of the time it will be a promise (the dependency) the router will wait for the promise to be resolved before continuing the route. 
+
+resolve: {  - we can wait for the data to be available before we seeing the new view...
+	books: function (dataService){
+		return dataService.getAllBooks();
+	}
+}
+learn more about this ...
+
+inject books property into the controller...
+
+$route Events -- events fired when using the route service... 
+all the route changes broadcast on $rootScope. 
+
+Inject $rootScope to define event handlers..
+use $rootScope.$on to specify event types to listen for...
+
+4 events. 
+routeChangeStarts....routeChangeSuccess.. routeChangeError -- routeUpdate 
