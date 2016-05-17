@@ -13,9 +13,9 @@
 	</ul>
 	</div>
 	<a href="#/addBook">Add New Books!</a>
+	<a href="#/EditBook/{{books.lastEdited.book_id}}">Open last Edited</a>
 	<h3>All readers returned from factory getAllReaders() </h3>
 	<div>
-	
 	<ul>
 		<li ng-repeat = "reader in books.allReaders">
 		{{reader.reader_id}},
@@ -24,7 +24,9 @@
 		{{reader.totalMinutesRead}},
 		{{books.getBadge(reader.totalMinutesRead)}}
 		</li>
-
 	</ul>
-
+	</div>
+	<h3>Current favorite book </h3>
+	<div>
+		{{books.favoriteBook}}
 	</div>
