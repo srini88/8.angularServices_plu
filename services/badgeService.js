@@ -8,7 +8,7 @@
 
 
 	function retrieveBadge(minutesRead){
-		console.log("retriveBadge has been called");
+		//console.log("retriveBadge has been called");
 		var badge = null;
 
 		switch(true){

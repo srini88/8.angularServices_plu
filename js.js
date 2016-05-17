@@ -71,9 +71,29 @@ app.config(['booksProvider','$routeProvider',function(booksProvider, $routeProvi
 		})
 		//Prior to 1.3 you had to pass route Config object to Otherwise..
 		.otherwise('/');
-
-
+}])
+//run to use to add any initialziation code module may need..
+/// using to register event handlers to couple of events on the rootScope.
+app.run(['$rootScope', function($rootScope){
+	//listening to events on rootScope , so inject it to the run function
+	$rootScope.$on('$routeChangeSuccess', function(event, current, previous){
+		//you would see it printing
+		//Object {name: "$routeChangeSuccess", targetScope: Scope, defaultPrevented: false, currentScope: Scope}
+		console.log("successfully chaged routes");
+		console.log(event);
+		console.log(current);
+		console.log(previous);
+	});
+	$rootScope.$on('$routeChangeError', function(event, current, previous, rejection){
+		console.log("error changing routes");
+		console.log(event);
+		console.log(current);
+		console.log(previous);
+		console.log(rejection);
+	});
 
 }])
+
+
 
 })();

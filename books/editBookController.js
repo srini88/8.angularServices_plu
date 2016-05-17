@@ -10,6 +10,6 @@
 		vm.currentBook = books.filter(function(item){
 			return item.book_id == $routeParams.bookID;
 		})[0];
-		console.log(vm.currentBook);
+		//console.log(vm.currentBook);
 	}
 })();
