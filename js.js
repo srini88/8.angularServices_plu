@@ -1,6 +1,6 @@
 (function(){
 
-var app = angular.module('app',['ngRoute']);
+var app = angular.module('app',['ngRoute','ngCookies']);
 
 //dont have to inject provide service into config and then call provider 
 /// provider is also exposed directly on module object..
@@ -83,18 +83,18 @@ app.run(['$rootScope', function($rootScope){
 		//you would see it printing
 		//Object {name: "$routeChangeSuccess", targetScope: Scope, defaultPrevented: false, currentScope: Scope}
 		console.log("successfully chaged routes");
-		console.log(event);
-		console.log(current);
-		console.log(previous);
+		// console.log(event);
+		// console.log(current);
+		// console.log(previous);
 	});
 	$rootScope.$on('$routeChangeError', function(event, current, previous, rejection){
 		//youwould see Object {name: "$routeChangeError", targetScope: Scope, defaultPrevented: false, currentScope: Scope} 
 		///because of throw..
 		console.log("error changing routes");
-		console.log(event);
-		console.log(current);
-		console.log(previous);
-		console.log(rejection);
+		// console.log(event);
+		// console.log(current);
+		// console.log(previous);
+		// console.log(rejection);
 	});
 
 }])

@@ -290,5 +290,10 @@ you can configure whether or not calls to debug() will be shown in the console u
 
 logProvider ---  can be made considerablymore interesting using decorators...
 
+---cookies demo -- 
+i want to aadd new features to app , able to specify a particular book as the favorite book , so it can be displayed on the homepage...also store the recently edited book...
+
+store both of them in cookies...
+
 
 
