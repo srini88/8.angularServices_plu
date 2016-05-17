@@ -32,7 +32,7 @@
 			var deferred = $q.defer();
 			$timeout(function(){
 
-				var successful = true;
+				var successful = false;
 				if (successful){
 					deferred.notify("Just getting started gathering books..");
 					deferred.notify("Almost done gathering books..");
