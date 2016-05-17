@@ -297,4 +297,118 @@ store both of them in cookies...
 
 ---lets see how to make config change in the log service.... to configure services we inject the associated provider in the module's config function..
 
+-------------------networking services....server over http ... using built in framework... built in http and resource services...
+
+in http, transformations and interceptors...  and then $resource service..
+
+$http service -- 200 OK...
+Function as a service... pass it a configuration object... returns a promise with two additional methodsd (success and error)
+
+$http configuration object... 
+1) method -- http method ... get post, put delete..
+2) url - absolute or relative url 
+3) params - key value pair 
+4) data - body of http request 
+5) headers..
+6) cache - propery is a boolean value specifies whether or not angular should cache the request ..true request will be cached in default http cache...
+
+Response object -- it returns a promise ..  parameter passed to the then functions on the http promise..contains following properties...
+
+data - boddy of response..(raw JSON)
+status  - 200 OK, 404 not found 
+statusText - corresponding HTTP status message
+headers - http response headers - it is a fn - pass to it optional header name
+
+config - contains the config object that was passed to the $http service..when the request was made... (good)
+
+
+REST FUL web services -- 
+
+representational state transfer... arch pattern..
+Web API or HTTP Api - call this instead..
+
+uses HTTP verbs to specify CRUD operations... 
+URL conventions adddress individual aas well as collection of resources..
+
+we will do rest crud on booklogger...
+
+POST - if successful, returns HTTP 201 created..
+
+read  0 GET returns HTTP 200..... get api/books or api/books/5
+
+update - PUT  if successful, returns HTTp 204 no content...
+Delecte - if successful, returns HTTP 204 NO content..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
