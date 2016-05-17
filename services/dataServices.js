@@ -17,14 +17,43 @@
 			})
 			.then(sendResponseData)
 			.catch(sendGetBooksError);
-
-			function sendResponseData(response){
-				console.log( response.data);
+		}
+		function sendResponseData(response){
+				//console.log( response.data);
 				return response.data;
-			}
-			function sendGetBooksError(response){
+		}
+		function sendGetBooksError(response){
 				return $q.reject("Error retrieving books(s), HTTP status: " + response.status);
+		}
+
+		function getBookByID(bookID){
+			return $http({
+				method :'GET',
+				url :'http://jsonplaceholder.typicode.com/users/'+bookID
+			})
+			.then(sendResponseData)
+			.catch(sendGetBooksError);
+
+		}
+
+
+		function updateBook(book){
+
+			return $http({
+				method :'PUT',
+				url : 'http://jsonplaceholder.typicode.com/users/'+book.id,
+				data :book
+			})
+			.then(updateBookSuccess)
+			.catch(updateBookError);
+
+			function updateBookSuccess(response){
+				return "Book updated: " + response.config.data.name;
 			}
+			function updateBookError(response){
+				return $q.reject("Error updating book, HTTP status: " + response.status);
+			}
+
 
 		}
 		function getAllReaders(){
@@ -70,7 +99,9 @@
 
 		return {
 			getAllBooks:getAllBooks,
-			getAllReaders:getAllReaders
+			getAllReaders:getAllReaders,
+			getBookByID :getBookByID,
+			updateBook : updateBook
 		};
 	}
 

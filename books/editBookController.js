@@ -2,20 +2,30 @@
 	angular.module("app")
 	//have to inject $routeParams
 	//no nneed to inject dataService into the controlleer..since call to the dataService is happening in the resolve propery...
-	.controller('EditBookController', ['$routeParams', 'books','$cookies','$cookieStore', EditBookController]);
-	function EditBookController($routeParams, books, $cookies, $cookieStore){
+	.controller('EditBookController', ['$routeParams', 'books','$cookies','$cookieStore','dataService','$log','$location', EditBookController]);
+	function EditBookController($routeParams, books, $cookies, $cookieStore, dataService, $log, $location){
 		var vm= this;
 
-		vm.currentBook = books.filter(function(item){
-			return item.id == $routeParams.bookID;
-		})[0];
+		//before using filter, now actual book 
+		dataService.getBookByID($routeParams.bookID)
+			.then(getBookSuccess)
+			.catch(getBookError);
 
-		console.log(vm.currentBook);
+		function getBookSuccess(book){
+			console.log(book);
+			vm.currentBook = book;
+			$cookieStore.put('lastEdited', vm.currentBook);
 
-		vm.setAsFavorite = function(){
-			$cookies.favoriteBook = vm.currentBook.name;	
+		}
+		function getBookError(reason){
+			$log.error(reason);
 		}
 
-		$cookieStore.put('lastEdited', vm.currentBook);
+		vm.setAsFavorite = function(){ //this works without moving
+			//console.log(vm.currentBook + "cur"); prints
+			$cookies.favoriteBook = vm.currentBook.name;	
+		}
+		//console.log(vm.currentBook, "cur"); prints undefined move next line to getBookSuccess
+
 	}
 })();

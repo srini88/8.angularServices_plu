@@ -12,6 +12,7 @@ function BooksController(books, dataService, logger, badgeService, $q, $cookies,
 	vm.appName = books.appName;
 	vm.appDesc = books.appDesc;
 
+	//console.log(dataService.getAllBooks());  //prints promise...
 	dataService.getAllBooks()
 		.then(getBooksSuccess)
 		.catch(errorCallback);
