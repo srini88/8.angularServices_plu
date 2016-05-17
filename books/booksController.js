@@ -2,10 +2,10 @@
 
 //console.log(angular.module('app')); //prints a big object
 angular.module('app').
-controller('BooksController', ['books', 'dataService', 'logger', 'badgeService','$q' ,'$cookies','$cookieStore',BooksController]);
+controller('BooksController', ['books', 'dataService', 'logger', 'badgeService','$q' ,'$cookies','$cookieStore', '$log',BooksController]);
 
 //update booksController and store that shit in the view..
-function BooksController(books, dataService, logger, badgeService, $q, $cookies, $cookieStore){
+function BooksController(books, dataService, logger, badgeService, $q, $cookies, $cookieStore, $log){
 
 	var vm = this;
 	vm.appName = books.appName;
@@ -27,10 +27,14 @@ function BooksController(books, dataService, logger, badgeService, $q, $cookies,
 	}
 	vm.getBadge = badgeService.retrieveBadge; 
 	logger.output("BooksController has been created.."); 
-	///get thsese stuff from the view...
-	vm.favoriteBook = $cookies.favoriteBook; //getting from within the function
-	console.log($cookies.favoriteBook , "from cookie");
+	vm.favoriteBook = $cookies.favoriteBook; 
 	vm.lastEdited = $cookieStore.get('lastEdited');
+
+	$log.log("logging with log");
+	$log.info("logging with info");
+	$log.warn("logging with warn");
+	$log.error("logging with error");
+	$log.debug("logging with debug");  //all stuff shows in different colors..
 }
 
 })();
